@@ -11,30 +11,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<c:choose>
-		<c:when test="${param.name == '홍길동' }">
-			홍길동님 환영합니다.
-		</c:when>
-		<c:when test="${param.name == '이순신' }">
-			이순신님 환영합니다.
-		</c:when>
-		<c:otherwise>
-			else문장을 대신합니다.
-		</c:otherwise>
-	</c:choose>
-	<br>
-
-	<!-- 20세 이상, 20미만을 choose문장으로 -->
 	
 	<c:choose>
-		<c:when test="${param.age >= 20 }">
-			성인입니다.
+		<c:when test="${param.name == '홍길동' }">
+			홍길동님 환영합니다
+		</c:when>
+		<c:when test="${param.name == '이순신' }">
+			이순신님 환영합니다
 		</c:when>
 		<c:otherwise>
-			미성년자입니다.
+			else문장을 대신합니다
 		</c:otherwise>
 	</c:choose>
+	
+	<!-- 20세 이상, 20미만을 choose문장으로 써보셈 -->
+	<c:choose>
+		<c:when test="${param.age >= 20 }">
+			성인입니다
+		</c:when>
+		<c:otherwise>
+			미성년자입니다
+		</c:otherwise>
+	</c:choose>
+	
+	
+	
+	
 	
 </body>
 </html>

@@ -9,10 +9,11 @@
 <body>
 
 	<form action="el_form_ok.jsp" method="post">
-		이름:<input type="text" name="name"><br>
-		나이:<input type="number" name = "age"><br>
+		이름:<input type="text" name="name">
+		나이:<input type="number" name="age">
 		<input type="submit" value="확인">
 	</form>
+
 
 </body>
 </html>
