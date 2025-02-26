@@ -58,6 +58,8 @@ public class UsersController extends HttpServlet {
 			request.getRequestDispatcher("mypage.jsp").forward(request, response);
 		} else if(command.equals("/users/modifyForm.users")) {
 			service.modify(request, response);
+		} else if(command.equals("/users/delete.users")) { //회원탈퇴
+			service.delete(request, response);
 		}
 	
 	}

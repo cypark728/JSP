@@ -1,6 +1,7 @@
 package com.myweb.users.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -105,8 +106,58 @@ public class UsersServiceImpl implements UsersService{
 		UsersDAO dao = UsersDAO.getInstance();
 		int result = dao.modify(email, name, gender, phone, snsYn);
 		
-		if(result == 1) {
-			response.sendRedirect("../index.jsp");
+		if(result == 1) { //성공
+			//세션의 정보도 업데이트
+			UsersDTO userDTO = new UsersDTO(email, name, null, phone, gender, snsYn, null);
+			session.setAttribute("userDTO", userDTO);
+			
+			//화면에 메시지를 보내는 또다른 방법 (out객체)
+			response.setContentType("text/html; charset=UTF-8;");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정보가 수정되었습니다');");
+			out.println("location.href='/MyWeb/index.jsp';");
+			out.println("</script>");
+			
+		} else { //실패
+			response.sendRedirect("mypage.users");
+		}
+		
+	}
+
+	@Override
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		/*
+		 * 1. delete from 테이블명 where 키 = ?
+		 * 2. 이메일은 세션에 있습니다. 
+		 * 3. 이메일을 얻어서 dao에서 삭제를 진행하면 됩니다.
+		 * 4. 삭제 성공 시에는 세션을 삭제하고,
+		 *    메인페이지로 이동(메시지도 띄워주세요),
+		 * 	  실패시에는 마이페이지로 이동
+		 * 
+		 */
+		
+		//이메일은 세션
+		HttpSession session = request.getSession();
+		UsersDTO dto = (UsersDTO)session.getAttribute("userDTO");
+		String email = dto.getEmail();
+				
+		UsersDAO dao = UsersDAO.getInstance();
+		int result = dao.delete(email);
+		
+		if(result == 1) { //성공
+			session.invalidate(); //모든 세션 삭제
+			
+			response.setContentType("text/html; charset=UTF-8;");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('회원 탈퇴가 완료되었습니다.');");
+			out.println("location.href='/MyWeb/index.jsp';");
+			out.println("</script>");
+			
+		} else { //실패
+			response.sendRedirect("mypage.users");
 		}
 		
 	}
