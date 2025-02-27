@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.myweb.board.service.BoardService;
 import com.myweb.board.service.BoardServiceImpl;
@@ -40,6 +41,13 @@ public class BoardController extends HttpServlet {
 		
 		if(command.equals("/notice/regist.board")) { //글작성
 			
+			//시나리오 - 글 등록을 하려면 회원인 사람만 할 수 있음
+			HttpSession session = request.getSession();
+			if(session.getAttribute("userDTO") == null) {
+				response.sendRedirect("../users/login.users");
+				return;
+			}
+			
 			request.getRequestDispatcher("notice_write.jsp").forward(request, response);
 		} else if(command.equals("/notice/registForm.board")) { // 글 등록
 			
@@ -52,6 +60,17 @@ public class BoardController extends HttpServlet {
 			
 			service.getContent(request, response);
 			request.getRequestDispatcher("notice_view.jsp").forward(request, response);
+		} else if(command.equals("/notice/modify.board")) { //글 수정
+			
+			service.getContent(request, response); //글 내용 조회
+			request.getRequestDispatcher("notice_modify.jsp").forward(request, response);
+		} else if(command.equals("/notice/update.board")) { //글 수정하기
+			
+			service.update(request, response);
+			
+		} else if(command.equals("/notice/delete.board")) { //글 삭제
+			
+			service.delete(request, response);
 		}
 	}
 	

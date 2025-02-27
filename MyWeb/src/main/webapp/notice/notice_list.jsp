@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ include file="../include/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    	
 	
+	<%@ include file="../include/header.jsp" %>
+
 	<div id="container">
 		<!-- location_area -->
 		<div class="location_area customer">
@@ -20,6 +21,7 @@
 
 		<!-- bodytext_area -->
 		<div class="bodytext_area box_inner">
+		
 			<form action="#" class="minisrch_form">
 				
 				<fieldset>
@@ -45,10 +47,11 @@
 					</tr>
 				</thead>
 				<tbody>
+					
 					<c:forEach var="dto" items="${list }">
 					<tr>
 						<td>${dto.bno }</td>
-						<td class="tit_notice"><a href="getContent.board?bno=${dto.bno }">${dto.title }</a> </td>
+						<td class="tit_notice"><a href="getContent.board?bno=${dto.bno }">${dto.title }</a></td>
 						<td>${dto.email }</td>
 						<td>
 							<fmt:parseDate var="time" value="${dto.regdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
@@ -61,15 +64,15 @@
 			</table>
 			<!-- pagination -->
 			<div class="pagination">
-				<a href="javascript:;" class="firstpage  pbtn"><img src="img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
-				<a href="javascript:;" class="prevpage  pbtn"><img src="img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
+				<a href="javascript:;" class="firstpage  pbtn"><img src="../img/btn_firstpage.png" alt="첫 페이지로 이동"></a>
+				<a href="javascript:;" class="prevpage  pbtn"><img src="../img/btn_prevpage.png" alt="이전 페이지로 이동"></a>
 				<a href="javascript:;"><span class="pagenum currentpage">1</span></a>
 				<a href="javascript:;"><span class="pagenum">2</span></a>
 				<a href="javascript:;"><span class="pagenum">3</span></a>
 				<a href="javascript:;"><span class="pagenum">4</span></a>
 				<a href="javascript:;"><span class="pagenum">5</span></a>
-				<a href="javascript:;" class="nextpage  pbtn"><img src="img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
-				<a href="javascript:;" class="lastpage  pbtn"><img src="img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
+				<a href="javascript:;" class="nextpage  pbtn"><img src="../img/btn_nextpage.png" alt="다음 페이지로 이동"></a>
+				<a href="javascript:;" class="lastpage  pbtn"><img src="../img/btn_lastpage.png" alt="마지막 페이지로 이동"></a>
 			</div>
 			<!-- //pagination -->
 			
@@ -79,20 +82,5 @@
 	</div>
 	<!-- //container -->
 
+	
 	<%@ include file="../include/footer.jsp" %>
-
-</div>
-<!-- //wrap -->
-
-<h2 class="hdd">빠른 링크 : 전화 문의,카카오톡,오시는 길,꼭대기로</h2>
-<div class="quick_area">
-	<ul class="quick_list">
-		<li><a href="tel:010-7184-4403"><h3>전화 문의</h3><p>010-1234-5678</p></a></li>
-		<li><a href="javascript:;"><h3>카카오톡 <em>상담</em></h3><p>1:1상담</p></a></li>
-		<li><a href="javascript:;"><h3 class="to_contact">오시는 길</h3></a></li>
-	</ul>
-	<p class="to_top"><a href="#layout0" class="s_point">TOP</a></p>
-</div>
-
-</body>
-</html>

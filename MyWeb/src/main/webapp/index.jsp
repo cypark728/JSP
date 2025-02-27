@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@include file="include/header.jsp" %>
-
-    <!-- 모바일 슬라이드 -->
+	
+	<%@ include file="include/header.jsp" %>	
+		
+	<!-- 모바일 슬라이드 -->
 	<script type="text/javascript">
 	   $(document).ready(function(){
 			var swiper = new Swiper('.swiper-container', {
@@ -15,8 +15,7 @@
 			});
 		});
 	</script>
-<!-- wrap -->
-<div id="wrap">
+	
 	<div id="container">
         <div class="main_rolling_pc">
             <div class="visualRoll">
@@ -132,8 +131,6 @@
 
 	<%@ include file="include/footer.jsp" %>
 
-</div>
-<!-- //wrap -->
 
 
 <!-- contact_pop -->
@@ -181,6 +178,3 @@
 	</div>
 </div>
 
-
-</body>
-</html>

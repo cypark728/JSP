@@ -1,7 +1,5 @@
 package com.myweb.board.model;
 
-import java.sql.Timestamp;
-
 public class BoardDTO {
 
 	private int bno;
@@ -9,6 +7,11 @@ public class BoardDTO {
 	private String title;
 	private String content;
 	private String regdate;
+	
+	private String prevNo;	 //데이터베이스의 카멜표기법 때문에
+	private String prevTitle;
+	private String nextNo;
+	private String nextTitle;
 	
 	public BoardDTO() {
 	}
@@ -62,5 +65,39 @@ public class BoardDTO {
 		this.regdate = regdate;
 	}
 
+	public String getPrevNo() {
+		return prevNo;
+	}
+
+	public void setPrevNo(String prevNo) {
+		this.prevNo = prevNo;
+	}
+
+	public String getPrevTitle() {
+		return prevTitle;
+	}
+
+	public void setPrevTitle(String prevTitle) {
+		this.prevTitle = prevTitle;
+	}
+
+	public String getNextNo() {
+		return nextNo;
+	}
+
+	public void setNextNo(String nextNo) {
+		this.nextNo = nextNo;
+	}
+
+	public String getNextTitle() {
+		return nextTitle;
+	}
+
+	public void setNextTitle(String nextTitle) {
+		this.nextTitle = nextTitle;
+	}
+
+	
+	
 	
 }
